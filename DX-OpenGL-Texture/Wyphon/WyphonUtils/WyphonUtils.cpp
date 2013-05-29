@@ -121,16 +121,20 @@ namespace WyphonUtils {
 	///
 	extern "C" _declspec(dllexport)
 	HANDLE InitDevice() {
+		writeLog( "InitDevice");
 		HRESULT hr;
 		//create Direct3D instance if necessary
 		if ( g_pDirect3D9Ex_WyphonUtils == NULL ) {
+			writeLog( "Direct3D Context does not exist yet, create one.");
 			hr = Direct3DCreate9Ex( D3D_SDK_VERSION,  /*_Out_*/ &g_pDirect3D9Ex_WyphonUtils );
 			if ( hr != S_OK ) {
+				writeLog( "Direct3D Context creation failed");
 				return NULL;
 			}
 		}
 		//create device if necessary
 		if ( g_pDeviceD3D9ex_WyphonUtils == NULL ) {
+			writeLog( "Direct3D Device does not exist yet, create one.");
 
 			// Do we support hardware vertex processing? if so, use it. 
 			// If not, downgrade to software.
@@ -178,6 +182,7 @@ namespace WyphonUtils {
 
 			hr = g_pDirect3D9Ex_WyphonUtils->CreateDeviceEx(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, NULL, dwBehaviorFlags, &presentParameters, NULL, &g_pDeviceD3D9ex_WyphonUtils);
 			if ( hr != S_OK ) {
+				writeLog( "Direct3D Device creation failed");
 				return NULL;
 			}
 		}
