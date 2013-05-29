@@ -19,7 +19,7 @@ namespace WyphonUtils {
 	/* Appends text to a log file*/
 	BOOL writeLog( LPCSTR text ) {
 		FILE * f;
-		f = fopen_s("wyphon.log","a");
+		f = fopen("wyphon.log","a");
 
 		if (f != 0) {
 			fputs (text,f);
