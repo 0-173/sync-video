@@ -259,7 +259,10 @@ namespace WyphonUtils {
 		HRESULT hr = S_OK;
 
 		if ( *out_SharedTextureHandle == NULL ) { // we're about to create a new texture (rather than connecting to an existing one)
+			writeLog( "create new texture (not connecting to existing texture)");
 			usage = usage | D3DUSAGE_NONSECURE;
+		} else {
+			writeLog( "connecting to existing texture");
 		}
 
 		//create texture
