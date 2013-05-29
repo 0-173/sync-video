@@ -17,7 +17,7 @@ namespace WyphonUtils {
 	std::set<HANDLE> g_wyphonDeviceHandles;
 
 	/* Appends text to a log file*/
-	void writeLog( LPCSTR text ) {
+	BOOL writeLog( LPCSTR text ) {
 		FILE * f;
 		f = fopen("wyphon.log","a");
 
