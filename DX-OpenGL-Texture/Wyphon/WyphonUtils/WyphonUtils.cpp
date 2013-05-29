@@ -301,10 +301,13 @@ namespace WyphonUtils {
 			throw TEXT("Cannot create DX9Ex Texture.");
 		}
 
+		writeLog( "glGenTextures");
 		glGenTextures(1, &out_GlTextureName);
 
+		writeLog( "wglDXSetResourceShareHandleNV");
 			// prepare shared resource
 		if (!wglDXSetResourceShareHandleNV(pD3D9Texture, DXShareHandle) ) {
+			writeLog( "wglDXSetResourceShareHandleNV failed");
 			throw TEXT("Cannot prepare shared DX Texture for OpenGl. wglDXSetResourceShareHandleNV() failed.");
 		}
 
@@ -313,6 +316,7 @@ namespace WyphonUtils {
 			access = WGL_ACCESS_READ_WRITE_NV;
 		}
 
+		writeLog( "wglDXRegisterObjectNV failed");
 			// register for interop and associate with dx texture
 		out_GlTextureHandle = wglDXRegisterObjectNV(g_GLDXInteropHandle, pD3D9Texture,
 			out_GlTextureName,
