@@ -1,0 +1,327 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta29.dtd" >
+   <PATCH nodename="C:\data\2\video\vvvv\_ft\wyphon\_root_wyphon test 01.v4p" systemname="wyphon test 01" filename="C:\data\2\video\vvvv\_ft\development\vvvv-sdk\vvvv45\tests\patches\Wyphon tests\wyphon test 01.v4p">
+   <BOUNDS type="Window" left="0" top="0" width="9465" height="8400">
+   </BOUNDS>
+   <NODE systemname="Wyphon (Network)" filename="%VVVV%\tests\patches\Wyphon tests\plugins\NetworkWyphon\NetworkWyphon.csproj" nodename="Wyphon (Network)" componentmode="Hidden" id="0">
+   <BOUNDS type="Node" left="450" top="1110" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" slicecount="1" visible="1" values="1.09">
+   </PIN>
+   </NODE>
+   <NODE systemname="Renderer (TTY)" nodename="Renderer (TTY)" componentmode="InAWindow" id="4">
+   <BOUNDS type="Node" left="150" top="4695" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="150" top="4695" width="15810" height="1800">
+   </BOUNDS>
+   <BOUNDS type="Window" left="0" top="8835" width="11850" height="3315">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="5" systemname="IOBox (String)">
+   <BOUNDS type="Node" left="444" top="765" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="444" top="765" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" encoded="0" values="vvvv">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" encoded="0" values="vvvv">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" encoded="0" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="5" srcpinname="Output String" dstnodeid="0" dstpinname="Name">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="6" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Node" left="450" top="1485" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="450" top="1485" width="300" height="240">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" encoded="0" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="Wyphon Id" dstnodeid="6" dstpinname="Y Input Value">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="21" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Node" left="825" top="1485" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="825" top="1485" width="345" height="2010">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" encoded="0" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="10">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="Partner Id" dstnodeid="21" dstpinname="Y Input Value">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="22" systemname="IOBox (String)">
+   <BOUNDS type="Node" left="2592" top="1485" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2592" top="1485" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" encoded="0" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" encoded="0" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="Status" dstnodeid="22" dstpinname="Input String">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="23" systemname="IOBox (String)">
+   <BOUNDS type="Node" left="1230" top="1485" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1230" top="1485" width="1260" height="2010">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" encoded="0" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" encoded="0" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="10">
+   </PIN>
+   <PIN pinname="Show SliceIndex" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="Partner Name" dstnodeid="23" dstpinname="Input String">
+   </LINK>
+   <NODE systemname="SetPatch (VVVV)" nodename="SetPatch (VVVV)" componentmode="Hidden" id="39">
+   <BOUNDS type="Node" left="5280" top="5550" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Patch" visible="1">
+   </PIN>
+   <PIN pinname="XML Input" visible="1" slicecount="1" values="||">
+   </PIN>
+   </NODE>
+   <NODE systemname="PatchAlias (VVVV)" nodename="PatchAlias (VVVV)" componentmode="Hidden" id="40">
+   <BOUNDS type="Node" left="3603" top="4230" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Patch" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="40" srcpinname="Patch" dstnodeid="39" dstpinname="Patch">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="43" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Node" left="4149" top="930" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4149" top="930" width="480" height="480">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" encoded="0" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Bang">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" encoded="0" values="|Add Receiver|">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="43" srcpinname="Y Output Value" dstnodeid="39" dstpinname="Force Update">
+   </LINK>
+   <NODE systemname="SetPatch (VVVV)" nodename="SetPatch (VVVV)" componentmode="Hidden" id="45">
+   <BOUNDS type="Node" left="3603" top="5571" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Patch" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="XML Input" visible="1" slicecount="1" values="|&lt;!DOCTYPE PATCH  SYSTEM &quot;C:\data\2\video\vvvv\_ft\development\vvvv-sdk\vvvv45\lib\45alpha29.dtd&quot; &gt;&cr;&lf;   &lt;PATCH&gt;&cr;&lf;   &lt;NODE systemname=&quot;wyphon Sender test 01&quot; filename=&quot;%VVVV%\tests\patches\Wyphon tests\wyphon Sender test 01.v4p&quot; nodename=&quot;%VVVV%\tests\patches\Wyphon tests\wyphon Sender test 01.v4p&quot; componentmode=&quot;InAWindow&quot; id=&quot;48&quot;&gt;&cr;&lf;   &lt;BOUNDS type=&quot;Node&quot; left=&quot;4845&quot; top=&quot;345&quot; width=&quot;100&quot; height=&quot;100&quot;&gt;&cr;&lf;   &lt;/BOUNDS&gt;&cr;&lf;   &lt;/NODE&gt;&cr;&lf;   &lt;/PATCH&gt;|">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="44" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Node" left="4140" top="210" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4140" top="210" width="480" height="480">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" encoded="0" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Bang">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" encoded="0" values="|Add Sender|">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="44" srcpinname="Y Output Value" dstnodeid="45" dstpinname="Force Update">
+   </LINK>
+   <LINK srcnodeid="40" srcpinname="Patch" dstnodeid="45" dstpinname="Patch">
+   </LINK>
+   <NODE systemname="Switch (String Input)" nodename="Switch (String Input)" componentmode="Hidden" id="51">
+   <BOUNDS type="Node" left="3828" top="5202" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Input 1" slicecount="1" encoded="0" values="||">
+   </PIN>
+   <PIN pinname="Switch" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="44" srcpinname="Y Output Value" dstnodeid="51" dstpinname="Switch">
+   </LINK>
+   <NODE systemname="Switch (String Input)" nodename="Switch (String Input)" componentmode="Hidden" id="53">
+   <BOUNDS type="Node" left="5502" top="5205" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 2" visible="1" slicecount="1" values="text">
+   </PIN>
+   <PIN pinname="Input 1" slicecount="1" encoded="0" values="||">
+   </PIN>
+   <PIN pinname="Switch" visible="1" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="51" srcpinname="Output" dstnodeid="45" dstpinname="XML Input">
+   </LINK>
+   <LINK srcnodeid="43" srcpinname="Y Output Value" dstnodeid="53" dstpinname="Switch">
+   </LINK>
+   <LINK srcnodeid="53" srcpinname="Output" dstnodeid="39" dstpinname="XML Input">
+   </LINK>
+   <NODE systemname="Counter (Animation)" nodename="Counter (Animation)" componentmode="Hidden" id="54">
+   <BOUNDS type="Node" left="4734" top="3924" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Up" visible="1" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Minimum" slicecount="1" values="2000">
+   </PIN>
+   <PIN pinname="Maximum" slicecount="1" visible="-1" pintype="Input" values="99999">
+   </PIN>
+   <PIN pinname="Mode" slicecount="1" values="Unlimited">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="2000">
+   </PIN>
+   <PIN pinname="Increment" visible="-1" pintype="Input" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Down" visible="-1" pintype="Input" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <NODE systemname="AsString (Value)" nodename="AsString (Value)" componentmode="Hidden" id="55">
+   <BOUNDS type="Node" left="4734" top="4230" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="SubType" slicecount="1" values="|Integer (MinInt .. MaxInt)|">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="54" srcpinname="Output" dstnodeid="55" dstpinname="Input">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="57" systemname="IOBox (String)">
+   <BOUNDS type="Node" left="4317" top="4632" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4317" top="4632" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" encoded="0" values="|&lt;!DOCTYPE PATCH  SYSTEM &quot;C:\data\2\video\vvvv\_ft\development\vvvv-sdk\vvvv45\lib\45alpha29.dtd&quot; &gt;&cr;&lf;   &lt;PATCH&gt;&cr;&lf;   &lt;NODE systemname=&quot;wyphon Sender test 01&quot; filename=&quot;%VVVV%\tests\patches\Wyphon tests\wyphon Sender test 01.v4p&quot; nodename=&quot;%VVVV%\tests\patches\Wyphon tests\wyphon Sender test 01.v4p&quot; componentmode=&quot;InAWindow&quot; id=&quot;$$$&quot;&gt;&cr;&lf;   &lt;BOUNDS type=&quot;Node&quot; left=&quot;4845&quot; top=&quot;345&quot; width=&quot;100&quot; height=&quot;100&quot;&gt;&cr;&lf;   &lt;/BOUNDS&gt;&cr;&lf;   &lt;/NODE&gt;&cr;&lf;   &lt;/PATCH&gt;|">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" encoded="0" values="|&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;|">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" encoded="0" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   <PIN pinname="Output String" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="RegExpr (String Replace)" filename="%VVVV%\addonpack\lib\nodes\plugins\RegExprNodes.dll" nodename="RegExpr (String Replace)" componentmode="Hidden" id="58">
+   <BOUNDS type="Node" left="4326" top="4908" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Regular Expression" slicecount="1" values="\$\$\$">
+   </PIN>
+   <PIN pinname="To" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="55" srcpinname="Output" dstnodeid="58" dstpinname="To">
+   </LINK>
+   <LINK srcnodeid="57" srcpinname="Output String" dstnodeid="58" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="58" srcpinname="Output" dstnodeid="51" dstpinname="Input 2">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="60" systemname="IOBox (String)">
+   <BOUNDS type="Node" left="6000" top="4629" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="6000" top="4629" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" encoded="0" values="|&lt;!DOCTYPE PATCH  SYSTEM &quot;C:\data\2\video\vvvv\_ft\development\vvvv-sdk\vvvv45\lib\45alpha29.dtd&quot; &gt;&cr;&lf;   &lt;PATCH&gt;&cr;&lf;   &lt;NODE systemname=&quot;wyphon Receiver test 01&quot; filename=&quot;%VVVV%\tests\patches\Wyphon tests\wyphon Receiver test 01.v4p&quot; nodename=&quot;%VVVV%\tests\patches\Wyphon tests\wyphon Receiver test 01.v4p&quot; componentmode=&quot;InAWindow&quot; id=&quot;$$$&quot;&gt;&cr;&lf;   &lt;BOUNDS type=&quot;Node&quot; left=&quot;4875&quot; top=&quot;1005&quot; width=&quot;100&quot; height=&quot;100&quot;&gt;&cr;&lf;   &lt;/BOUNDS&gt;&cr;&lf;   &lt;/NODE&gt;&cr;&lf;   &lt;/PATCH&gt;|">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" encoded="0" values="|&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;|">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" encoded="0" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   <PIN pinname="Output String" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="RegExpr (String Replace)" filename="%VVVV%\addonpack\lib\nodes\plugins\RegExprNodes.dll" nodename="RegExpr (String Replace)" componentmode="Hidden" id="59">
+   <BOUNDS type="Node" left="5997" top="4905" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Regular Expression" slicecount="1" values="\$\$\$">
+   </PIN>
+   <PIN pinname="To" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="60" srcpinname="Output String" dstnodeid="59" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="55" srcpinname="Output" dstnodeid="59" dstpinname="To">
+   </LINK>
+   <LINK srcnodeid="59" srcpinname="Output" dstnodeid="53" dstpinname="Input 2">
+   </LINK>
+   <NODE systemname="OR (Boolean)" nodename="OR (Boolean)" componentmode="Hidden" id="1004">
+   <BOUNDS type="Node" left="4740" top="3624" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="43" srcpinname="Y Output Value" dstnodeid="1004" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="44" srcpinname="Y Output Value" dstnodeid="1004" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="1004" srcpinname="Output" dstnodeid="54" dstpinname="Up">
+   </LINK>
+   </PATCH>

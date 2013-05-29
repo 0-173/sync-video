@@ -1,0 +1,25 @@
+Source/PluginBase/
+Source/Common/
+Include/
+Project/Debug/
+Project/Release/
+Project/ipch/
+/Binaries/RR_ImportWyphon_debug.dll
+*.opensdf
+*.vcxproj.user
+*.sdf
+*.suo
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a

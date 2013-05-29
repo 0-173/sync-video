@@ -1,0 +1,21 @@
+== Wyphon ==
+- Optimus BUG
+- zusätzliche Wyphon Funktionen implementieren
+- garbage collection => upon unsuccessful communication => Frederik
+
+== Import Plugin ==
+
+== Export Plugin ==
+- programmieren
+
+== Wyphon VVVV / .Net ===
+- onChangeTextureName
+
+
+== Questions to Frederik ==
+- Store Names in LocalMessageBroadcast => already there
+- Store BroadcastPartnerIds also in such a map in LocalMessageBroadcast => already there as map keys
+- GetAllBroadcastPartnerIds should use the local map! => Elio
+
+- counter: when calling dx init, set to 0, decrease on 
+- wglDXLockObjectsNV - do we need it here? when looking at the documentation: yes!

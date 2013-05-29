@@ -1,0 +1,11 @@
+﻿Build started 23.05.2013 03:08:52.
+     1>Project "D:\Dokumente\Projekte\Entwicklung\Video\DX-OpenGL-Texture\Freeframe-Plugin\RR-DXBridge\OptimusTest\OptimusTest.vcxproj" on node 4 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\OptimusTest.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt OptimusTest.cpp
+         OptimusTest.cpp
+     1>d:\dokumente\projekte\entwicklung\video\dx-opengl-texture\freeframe-plugin\rr-dxbridge\optimustest\optimustest.cpp : fatal error C1853: 'Debug\OptimusTest.pch' precompiled header file is from a previous version of the compiler, or the precompiled header is C++ and you are using it from C (or vice versa)
+     1>Done Building Project "D:\Dokumente\Projekte\Entwicklung\Video\DX-OpenGL-Texture\Freeframe-Plugin\RR-DXBridge\OptimusTest\OptimusTest.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.18
