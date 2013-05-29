@@ -288,6 +288,7 @@ namespace WyphonUtils {
 	/// 
 	extern "C" _declspec(dllexport)
 	HRESULT CreateLinkedGLTexture(unsigned __int32 width, unsigned __int32 height, DWORD usage, DWORD format, HANDLE &DXShareHandle, GLuint &out_GlTextureName, HANDLE &out_GlTextureHandle) {
+		writeLog( "CreateLinkedGLTexture");
 		HRESULT hr = S_OK;
 
 		if ( wglDXCloseDeviceNV == NULL ) {
