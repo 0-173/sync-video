@@ -316,7 +316,7 @@ namespace WyphonUtils {
 			access = WGL_ACCESS_READ_WRITE_NV;
 		}
 
-		writeLog( "wglDXRegisterObjectNV failed");
+		writeLog( "wglDXRegisterObjectNV");
 			// register for interop and associate with dx texture
 		out_GlTextureHandle = wglDXRegisterObjectNV(g_GLDXInteropHandle, pD3D9Texture,
 			out_GlTextureName,
@@ -327,6 +327,7 @@ namespace WyphonUtils {
 			 */
 		DWORD e = GetLastError();
 		if ( !out_GlTextureHandle ) {
+			writeLog( "wglDXRegisterObjectNV failed");
 			throw TEXT("Cannot link OpenGl to DX Texture. wglDXRegisterObjectNV() failed.");
 		}
 		
