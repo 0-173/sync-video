@@ -262,7 +262,7 @@ namespace WyphonUtils {
 			writeLog( "create new texture (not connecting to existing texture)");
 			usage = usage | D3DUSAGE_NONSECURE;
 		} else {
-			writeLog( "connecting to existing texture");
+			writeLog( "connecting to existing texture (do not create a new one)");
 		}
 
 		//create texture
