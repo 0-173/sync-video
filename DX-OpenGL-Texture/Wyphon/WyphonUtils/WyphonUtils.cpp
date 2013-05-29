@@ -16,6 +16,18 @@ namespace WyphonUtils {
 
 	std::set<HANDLE> g_wyphonDeviceHandles;
 
+	/* Appends text to a log file*/
+	writeLog( LPCSTR text ) {
+		FILE * f;
+		f = fopen("wyphon.log","a");
+
+		if (f != 0) {
+			fputs (text,f);
+			fputs ("\n",f);
+			fclose (f);
+		}
+	}
+
 	/**
 	 * Creates a new handle and adds it to the list of handles
 	 *
@@ -55,18 +67,23 @@ namespace WyphonUtils {
 	 * @author		Elio
 	 */
 	HRESULT InitGLDXInterop() {
+		writeLog( "InitGLDXInterop");
 		if ( g_GLDXInteropHandle != NULL ) {
 			return S_FALSE;
 		}
+		writeLog( "loadNvExt");
 		if ( !loadNvExt() ) {
 			// NVidia wglDXInterop is not supported
 			// - this is not critical (we do not throw an exception)
+			writeLog( "loadNvExt failed");
 			return S_FALSE;
 		}
+		writeLog( "wglDXOpenDeviceNV");
 		g_GLDXInteropHandle = wglDXOpenDeviceNV(g_pDeviceD3D9ex_WyphonUtils);
 		if ( g_GLDXInteropHandle == NULL ) {
 			// NVidia wglDXInterop failed to initialize
 			// - this is not critical (we do not throw an exception)
+			writeLog( "wglDXOpenDeviceNV failed");
 			return S_FALSE;
 		}
 		return S_OK;
@@ -80,6 +97,7 @@ namespace WyphonUtils {
 	 * @author		Elio
 	 */
 	HRESULT ReleaseGLDXInterop() {
+		writeLog( "ReleaseGLDXInterop");
 		if ( g_GLDXInteropHandle == NULL ) { // already closed
 			return S_FALSE;
 		}
