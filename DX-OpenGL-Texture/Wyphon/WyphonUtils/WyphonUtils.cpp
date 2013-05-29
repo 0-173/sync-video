@@ -208,6 +208,7 @@ namespace WyphonUtils {
 	///
 	extern "C" _declspec(dllexport)
 	HRESULT ReleaseDevice(HANDLE wyphonDeviceHandle) {
+		writeLog( "ReleaseDevice");
 		if ( CloseHandle(wyphonDeviceHandle) ) { // handle really existed
 			if ( g_wyphonDeviceHandles.size() == 0 ) { // the last user left
 				if ( g_pDeviceD3D9ex_WyphonUtils != NULL ) {
@@ -249,7 +250,9 @@ namespace WyphonUtils {
 	///
 	extern "C" _declspec(dllexport)
 	HRESULT CreateDX9ExTexture(unsigned __int32 width, unsigned __int32 height, DWORD usage, D3DFORMAT format, PDIRECT3DTEXTURE9 * out_pD3D9Texture, HANDLE * out_SharedTextureHandle) {
+		writeLog( "CreateDX9ExTexture");
 		if ( g_pDirect3D9Ex_WyphonUtils == NULL || g_pDeviceD3D9ex_WyphonUtils == NULL ) {
+			writeLog( "Direct3D not properly intialized");
 			throw TEXT("Direct3D not properly intialized. Call InitDX9Ex() first (and don't forget to ReleaseDX9Ex() before exiting your application)");
 		}
 		
