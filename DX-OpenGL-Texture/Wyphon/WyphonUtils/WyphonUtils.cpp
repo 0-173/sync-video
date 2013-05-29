@@ -25,6 +25,9 @@ namespace WyphonUtils {
 			fputs (text,f);
 			fputs ("\n",f);
 			fclose (f);
+			return TRUE;
+		} else {
+			return FALSE;
 		}
 	}
 
