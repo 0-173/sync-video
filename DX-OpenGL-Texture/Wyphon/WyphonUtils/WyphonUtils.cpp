@@ -343,6 +343,7 @@ namespace WyphonUtils {
 	/// 
 	extern "C" _declspec(dllexport)
 	HRESULT ReleaseLinkedGLTexture(GLuint &out_GlTextureName, HANDLE &out_GlTextureHandle) {
+		writeLog( "ReleaseLinkedGLTexture");
 		HRESULT hr = S_OK;
 
 		if ( wglDXCloseDeviceNV == NULL ) {
