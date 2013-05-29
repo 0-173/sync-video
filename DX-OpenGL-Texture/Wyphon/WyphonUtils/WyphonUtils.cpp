@@ -189,7 +189,6 @@ namespace WyphonUtils {
 				return NULL;
 			}
 		}
-		writeLog( "InitGLDXInterop");
 		hr = InitGLDXInterop();
 		if ( hr != S_OK ) {
 			// GL/DX Interop failed or not supported
