@@ -134,7 +134,6 @@ namespace WyphonUtils {
 		}
 		//create device if necessary
 		if ( g_pDeviceD3D9ex_WyphonUtils == NULL ) {
-			writeLog( "Direct3D Device does not exist yet, create one.");
 
 			// Do we support hardware vertex processing? if so, use it. 
 			// If not, downgrade to software.
@@ -180,6 +179,7 @@ namespace WyphonUtils {
 			//present_parameters.Flags = 0;
 			//present_parameters.PresentationInterval   = D3DPRESENT_INTERVAL_IMMEDIATE;
 
+			writeLog( "Direct3D Device does not exist yet, create one.");
 			hr = g_pDirect3D9Ex_WyphonUtils->CreateDeviceEx(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, NULL, dwBehaviorFlags, &presentParameters, NULL, &g_pDeviceD3D9ex_WyphonUtils);
 			if ( hr != S_OK ) {
 				writeLog( "Direct3D Device creation failed");
