@@ -194,7 +194,6 @@ namespace WyphonUtils {
 			if ( hr != S_OK ) {
 				// GL/DX Interop failed or not supported
 				// - this is not critical
-				writeLog( "InitGLDXInterop failed");
 			}
 		}
 			// everything ok -> return new handle
