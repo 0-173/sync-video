@@ -63,6 +63,20 @@ static CFFGLPluginInfo PluginInfo (
 	"by Elio / www.r-revue.de" // About
 );
 
+/* Appends text to a log file*/
+BOOL writeLog( LPCSTR text ) {
+	FILE * f;
+	f = fopen("wyphon.debuglog","a");
+
+	if (f != 0) {
+		fputs (text,f);
+		fputs ("\n",f);
+		fclose (f);
+		return TRUE;
+	} else {
+		return FALSE;
+	}
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //  Constructor and destructor
