@@ -87,7 +87,7 @@ RRImportWyphon::RRImportWyphon()
  m_initResources(1),
  m_maxCoordsLocation(-1)
 {
-	writeLog('Importer: Construct');
+	writeLog("Importer: Construct");
 	// This is the number of textures (not the number of parameters!)
 	SetMinInputs(1);
 	SetMaxInputs(1);
@@ -115,7 +115,7 @@ RRImportWyphon::RRImportWyphon()
 
 DWORD RRImportWyphon::InitGL(const FFGLViewportStruct *vp)
 {
-	writeLog('Importer: InitGL');
+	writeLog("Importer: InitGL");
 	HWND hWnd = GetForegroundWindow(); // we don't have the Window Handle until now :(
 
 	//initialize gl extensions and
