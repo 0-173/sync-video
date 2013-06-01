@@ -37,7 +37,7 @@
 #define RRImportWyphon_H
 
 #include "../Include/FFGL/FFGLShader.h"
-#include "FFGL/FFGL/FFGLPluginSDK.h"
+#include "FFGL/FFGLPluginSDK.h"
 #include "../../../Wyphon/WyphonUtils/WyphonUtils.h"
 
 
