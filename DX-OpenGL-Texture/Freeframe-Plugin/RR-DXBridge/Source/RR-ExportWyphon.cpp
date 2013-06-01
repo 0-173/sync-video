@@ -52,7 +52,7 @@ using namespace WyphonUtils;
 static CFFGLPluginInfo PluginInfo ( 
 	RRExportWyphon::CreateInstance,	// Create method
 	"WYEX",								// Plugin unique ID											
-	"AAAWyphonEx (RR)",					// Plugin name											
+	"_WyphonEx (RR)",					// Plugin name											
 	1,						   			// API major version number 													
 	000,								  // API minor version number	
 	1,										// Plugin major version number
