@@ -33,8 +33,8 @@
     Programm erhalten haben. Wenn nicht, siehe <http://www.gnu.org/licenses/>.
  */
 
-#include "../Include/FFGL/FFGL.h"
-#include "../Include/FFGL/FFGLLib.h"
+#include <FFGL.h>
+#include <FFGLLib.h>
 #include <d3d9.h>
 #include "../../../Wyphon/Wyphon/Wyphon.h"
 #include "RR-ImportWyphon.h"
