@@ -143,6 +143,7 @@ DWORD RRImportWyphon::InitGL(const FFGLViewportStruct *vp)
 
 DWORD RRImportWyphon::DeInitGL()
 {
+	writeLog("Importer: DeInitGL");
 	/* this causes death. either it must be used another way or there's no need to unregister
 	wglDXUnregisterObjectNV(pDevice, m_TextureFromDX9Handle);*/
 	
@@ -234,6 +235,7 @@ DWORD RRImportWyphon::SetParameter(const SetParameterStruct* pParam)
 		case FFPARAM_WyphonApplicationName:
 			bChanged = strcmp( m_WyphonApplicationName, (char*) pParam->NewParameterValue ) != 0;
 			if ( bChanged ) {
+				writeLog("Importer: ParameterChangeAppName");
 				strcpy_s( m_WyphonApplicationName, (char*) pParam->NewParameterValue);
 				mbstowcs( m_WyphonApplicationNameT, m_WyphonApplicationName, WYPHON_MAX_DESCRIPTION_LENGTH+1 ); // also keep wchar_t version up to date
 				RetrieveTextureInfo();
@@ -242,6 +244,7 @@ DWORD RRImportWyphon::SetParameter(const SetParameterStruct* pParam)
 		case FFPARAM_WyphonTextureDescription:
 			bChanged = strcmp( m_WyphonTextureDescription, (char*) pParam->NewParameterValue ) != 0;
 			if ( bChanged ) {
+				writeLog("Importer: ParameterChangeTextureName");
 				strcpy_s( m_WyphonTextureDescription, (char*) pParam->NewParameterValue);
 				mbstowcs( m_WyphonTextureDescriptionT, m_WyphonTextureDescription, WYPHON_MAX_DESCRIPTION_LENGTH+1 ); // also keep wchar_t version up to date
 				RetrieveTextureInfo();
@@ -249,6 +252,7 @@ DWORD RRImportWyphon::SetParameter(const SetParameterStruct* pParam)
 			break;
 		case FFPARAM_Reload:
 			if ( pParam->NewParameterValue ) {
+				writeLog("Importer: ParameterUpdate");
 				RetrieveTextureInfo();
 			}
 			break;
@@ -266,6 +270,7 @@ DWORD RRImportWyphon::SetParameter(const SetParameterStruct* pParam)
 
 DWORD RRImportWyphon::CheckForTextureUpdate() {
 	if ( m_bTextureNeedsUpdate ) {
+		writeLog("Importer: CheckForTextureUpdate m_bTextureNeedsUpdate=TRUE");
 		m_bTextureNeedsUpdate = FALSE;
 
 		if ( m_glTextureHandle ) { // an old texture is connected. disconnect it
@@ -286,19 +291,23 @@ BOOL RRImportWyphon::RetrieveTextureInfo() {
 		return FALSE;
 	}
 
+	writeLog("Importer: RetrieveTextureInfo");
 		// for the case that we don't get a matching texture: clear everything and update
 	ZeroMemory(&m_WyphonTextureInfo, sizeof(m_WyphonTextureInfo));
 	m_bTextureNeedsUpdate = TRUE;
 
+	writeLog("Importer: RetrieveTextureInfo getPartnerIdByName");
 	unsigned __int32 wyphonPartnerId = Wyphon::getPartnerIdByName(m_hWyphonPartner, m_WyphonApplicationNameT);
 	if ( !wyphonPartnerId ) {
 		return FALSE;
 	}
+	writeLog("Importer: RetrieveTextureInfo getShareHandleByDescription");
 	HANDLE hSharedTexture = Wyphon::getShareHandleByDescription(m_hWyphonPartner, wyphonPartnerId, m_WyphonTextureDescriptionT);
 	if ( !hSharedTexture ) {
 		return FALSE;
 	}
 
+	writeLog("Importer: RetrieveTextureInfo GetD3DTextureInfo");
 	Wyphon::WyphonD3DTextureInfo WyphonTextureInfo;	
 	BOOL bRes = GetD3DTextureInfo(m_hWyphonPartner, hSharedTexture, wyphonPartnerId, WyphonTextureInfo.width, WyphonTextureInfo.height, WyphonTextureInfo.format, WyphonTextureInfo.usage, WyphonTextureInfo.description, WYPHON_MAX_DESCRIPTION_LENGTH+1 );
 	if ( !bRes ) {
@@ -319,6 +328,7 @@ BOOL RRImportWyphon::RetrieveTextureInfo() {
  * The call to WyphonUtils must be made by this thread and not by the callback function.
  */
 DWORD RRImportWyphon::NotifySharingStarted(HANDLE wyphonPartnerHandle, WyphonD3DTextureInfo WyphonTextureInfo) {
+	writeLog("Importer: NotifySharingStarted");
 	LPCTSTR appName = Wyphon::GetWyphonPartnerName(wyphonPartnerHandle, WyphonTextureInfo.partnerId);
 
 		// if both, app name and texture name match
@@ -334,6 +344,7 @@ DWORD RRImportWyphon::NotifySharingStarted(HANDLE wyphonPartnerHandle, WyphonD3D
 }
 
 DWORD RRImportWyphon::NotifySharingStopped(HANDLE wyphonPartnerHandle, WyphonD3DTextureInfo WyphonTextureInfo) {
+	writeLog("Importer: NotifySharingStopped");
 	m_WyphonTextureInfo = WyphonTextureInfo;
 
 	if ( WyphonTextureInfo.hSharedTexture == m_WyphonTextureInfo.hSharedTexture ) {
@@ -348,6 +359,7 @@ DWORD RRImportWyphon::NotifySharingStopped(HANDLE wyphonPartnerHandle, WyphonD3D
 }
 
 BOOL RRImportWyphon::MatchWyphonString(LPCTSTR objectString, LPCTSTR filterString) {
+	writeLog("Importer: MatchWyphonString");
 	BOOL equal = wcscmp( objectString, filterString ) == 0;
 	BOOL noFilter = wcslen( filterString ) == 0;
 
@@ -355,6 +367,7 @@ BOOL RRImportWyphon::MatchWyphonString(LPCTSTR objectString, LPCTSTR filterStrin
 }
 
 DWORD RRImportWyphon::UnsetTextureData() {
+	writeLog("Importer: UnsetTextureData");
 	ZeroMemory(&m_WyphonTextureInfo, sizeof(m_WyphonTextureInfo));
 	m_bTextureNeedsUpdate = FALSE;
 	return FF_SUCCESS;
@@ -367,6 +380,7 @@ HANDLE RRImportWyphon::GetTextureData(Wyphon::WyphonD3DTextureInfo &WyphonTextur
 
 
 void TextureSharingStartedCALLBACK( HANDLE wyphonPartnerHandle, unsigned __int32 sendingPartnerId, HANDLE sharedTextureHandle, unsigned __int32 width, unsigned __int32 height, DWORD format, DWORD usage, LPTSTR description, void * customData ) {
+	writeLog("Importer: TextureSharingStartedCALLBACK");
 	RRImportWyphon* pObj = (RRImportWyphon*) customData;
 	
 	WyphonD3DTextureInfo WyphonTextureInfo;
@@ -382,6 +396,7 @@ void TextureSharingStartedCALLBACK( HANDLE wyphonPartnerHandle, unsigned __int32
 }
 
 void TextureSharingStoppedCALLBACK( HANDLE wyphonPartnerHandle, unsigned int sendingPartnerId, HANDLE sharedTextureHandle, unsigned int width, unsigned int height, DWORD format, DWORD usage, LPTSTR description, void * customData ) {
+	writeLog("Importer: TextureSharingStoppedCALLBACK");
 	RRImportWyphon* pObj = (RRImportWyphon*) customData;
 
 	WyphonD3DTextureInfo WyphonTextureInfo;
