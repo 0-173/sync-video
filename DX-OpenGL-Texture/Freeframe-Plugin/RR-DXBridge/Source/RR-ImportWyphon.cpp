@@ -53,7 +53,7 @@ using namespace Wyphon;
 static CFFGLPluginInfo PluginInfo ( 
 	RRImportWyphon::CreateInstance,	// Create method
 	"WYIM",								// Plugin unique ID											
-	"Wyphon (RR)",					// Plugin name											
+	"Wyphon In (RR)",					// Plugin name											
 	1,						   			// API major version number 													
 	000,								  // API minor version number	
 	1,										// Plugin major version number
@@ -65,6 +65,7 @@ static CFFGLPluginInfo PluginInfo (
 
 /* Appends text to a log file*/
 BOOL writeLog( LPCSTR text ) {
+#ifdef DEBUG
 	FILE * f;
 	f = fopen("wyphon.debuglog","a");
 
@@ -76,6 +77,9 @@ BOOL writeLog( LPCSTR text ) {
 	} else {
 		return FALSE;
 	}
+#else
+	return TRUE;
+#endif
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

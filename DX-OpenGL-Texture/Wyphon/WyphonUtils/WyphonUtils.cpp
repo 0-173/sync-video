@@ -18,6 +18,7 @@ namespace WyphonUtils {
 
 	/* Appends text to a log file*/
 	BOOL writeLog( LPCSTR text ) {
+#ifdef DEBUG
 		FILE * f;
 		f = fopen("wyphon.debuglog","a");
 
@@ -29,6 +30,9 @@ namespace WyphonUtils {
 		} else {
 			return FALSE;
 		}
+#else
+		return TRUE;
+#endif
 	}
 
 	/**
