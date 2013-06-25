@@ -45,13 +45,12 @@
     <OutDir>Debug\</OutDir>
     <IntDir>Debug\</IntDir>
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);..\Include\FFGL;..\Include;..\Source\FFGL</IncludePath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>Release\</OutDir>
     <IntDir>Release\</IntDir>
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);..\Include\FFGL;..\Include;..\Source\FFGL</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -100,14 +99,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Source\FFGL\FFGL.cpp" />
-    <ClCompile Include="..\Source\FFGL\FFGLExtensions.cpp" />
-    <ClCompile Include="..\Source\FFGL\FFGLFBO.cpp" />
-    <ClCompile Include="..\Source\FFGL\FFGLPluginInfo.cpp" />
-    <ClCompile Include="..\Source\FFGL\FFGLPluginInfoData.cpp" />
-    <ClCompile Include="..\Source\FFGL\FFGLPluginManager.cpp" />
-    <ClCompile Include="..\Source\FFGL\FFGLPluginSDK.cpp" />
-    <ClCompile Include="..\Source\FFGL\FFGLShader.cpp" />
+    <ClCompile Include="..\Source\Common\FFGLExtensions.cpp" />
+    <ClCompile Include="..\Source\PluginBase\FFGL.cpp" />
+    <ClCompile Include="..\Source\PluginBase\FFGLPluginInfo.cpp" />
+    <ClCompile Include="..\Source\PluginBase\FFGLPluginInfoData.cpp" />
+    <ClCompile Include="..\Source\PluginBase\FFGLPluginManager.cpp" />
+    <ClCompile Include="..\Source\PluginBase\FFGLPluginSDK.cpp" />
     <ClCompile Include="..\Source\RR-ImportWyphon.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

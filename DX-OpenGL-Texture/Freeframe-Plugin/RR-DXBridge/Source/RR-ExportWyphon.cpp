@@ -58,7 +58,7 @@ static CFFGLPluginInfo PluginInfo (
 	1,										// Plugin major version number
 	000,									// Plugin minor version number
 	FF_EFFECT,						// Plugin type
-	"Wyphon Texture Bridge",	// Plugin description
+	"Wyphon Out (RR)",	// Plugin description
 	"by Elio / www.r-revue.de" // About
 );
 
@@ -88,7 +88,7 @@ RRExportWyphon::RRExportWyphon()
 	SetParamInfo(FFPARAM_WyphonTextureDescription, "Sharing Name", FF_TYPE_TEXT, m_WyphonTextureDescription);
 
 	m_hWyphonPartner = NULL;
-	m_glTextureHandle = NULL;
+	m_hInteropObject = NULL;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -104,7 +104,6 @@ DWORD RRExportWyphon::InitGL(const FFGLViewportStruct *vp)
 	m_extensions.Initialize();
 
 	// generate framebuffer object for copying textures
-	m_extensions.glGenFramebuffersEXT(1, &m_fbo);
 	m_width = vp->width;
 	m_height = vp->height;
 
@@ -133,8 +132,8 @@ DWORD RRExportWyphon::DeInitGL()
 		// tell everybody that we're off line
 	DestroyWyphonPartner(m_hWyphonPartner);
 
-	if ( m_glTextureHandle ) { // release any active texture
-		WyphonUtils::ReleaseLinkedGLTexture(m_glTextureName, m_glTextureHandle);
+	if ( m_hInteropObject ) { // release any active texture
+		WyphonUtils::ReleaseLinkedGLTexture(m_glTextureName, m_hInteropObject);
 	}
 
 		// close dx device and gl/dx interop device
@@ -155,6 +154,7 @@ DWORD RRExportWyphon::ProcessOpenGL(ProcessOpenGLStruct *pGL)
 	glBindTexture(GL_TEXTURE_2D, InputTexture.Handle);
 
 	//enable texturemapping
+	glPushAttrib(GL_TEXTURE_2D | GL_ENABLE_BIT );
 	glEnable(GL_TEXTURE_2D);
 
 	//get the max s,t that correspond to the 
@@ -184,36 +184,18 @@ DWORD RRExportWyphon::ProcessOpenGL(ProcessOpenGLStruct *pGL)
 	glEnd();
   
 	//disable texturemapping
-	glDisable(GL_TEXTURE_2D);
- 
-	if ( !m_glTextureHandle ) {
-			// unbind the drawn texture
-		glBindTexture(GL_TEXTURE_2D, 0);
-	} else {
-		/* Assume "fbo" is a name of a FBO created using glGenFramebuffersEXT(1, &fbo),
-		 * and width/height are the dimensions of the texture, respectively.
-		 * "tex_src" is the name of the source texture, and
-		 * "tex_dst" is the name of the destination texture, which should have been
-		 * already created */ 
+	glPopAttrib();
+	// unbind the drawn texture
+	glBindTexture(GL_TEXTURE_2D, 0);
 
+	if ( m_hInteropObject ) {
 		/*** COPY THE INPUT TEXTURE TO SHARED TEXTURE ****/
-		/// bind the FBO
-		m_extensions.glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, m_fbo);
-		/// attach the source texture to the fbo
-		m_extensions.glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT,
-			GL_TEXTURE_2D, InputTexture.Handle, 0);
+		WyphonUtils::CopyGLTexture( m_hWyphonDevice, m_hInteropObject, InputTexture.Handle, m_glTextureName, m_width, m_height, TRUE );
+			// restore the host's original FBO (if any) - because CopyGLTexture binds a different FBO
+		if ( pGL->HostFBO ) {
+			m_extensions.glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, pGL->HostFBO);
+		}
 
-		// lock and bind destination texture
-		glBindTexture(GL_TEXTURE_2D, m_glTextureName);
-		WyphonUtils::LockGLTexture(m_glTextureHandle);
-
-		/// copy from framebuffer (here, the FBO!) to the bound texture
-		glCopyTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 0, 0,m_width, m_height);
-		glBindTexture(GL_TEXTURE_2D, 0);
-		// unlock destination texture (but do not unbind it, we need it for drawing)
-		WyphonUtils::UnlockGLTexture(m_glTextureHandle);
-		/// unbind the FBO
-		m_extensions.glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
 	}
  
 	return FF_SUCCESS;
@@ -292,10 +274,10 @@ DWORD RRExportWyphon::SetParameter(const SetParameterStruct* pParam)
 }
 
 BOOL RRExportWyphon::GenerateTexture() {
-	if ( m_glTextureHandle ) {
-		ReleaseLinkedGLTexture(m_glTextureName, m_glTextureHandle);
+	if ( m_hInteropObject ) {
+		ReleaseLinkedGLTexture(m_glTextureName, m_hInteropObject);
 	}
 	m_shareHandle = NULL; // means: create new shared texture
-	HRESULT res = CreateLinkedGLTexture(m_width, m_height, D3DUSAGE_RENDERTARGET, D3DFMT_A8R8G8B8, m_shareHandle, m_glTextureName, m_glTextureHandle);
+	HRESULT res = CreateLinkedGLTexture(m_width, m_height, D3DUSAGE_RENDERTARGET, D3DFMT_A8R8G8B8, m_shareHandle, m_glTextureName, m_hInteropObject);
 	return (res == S_OK);
 }

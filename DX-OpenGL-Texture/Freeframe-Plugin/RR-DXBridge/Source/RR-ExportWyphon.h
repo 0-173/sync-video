@@ -37,7 +37,7 @@
 #define RRExportWyphon_H
 
 #include <FFGLShader.h>
-#include <FFGLPluginSDK.h>
+#include "PluginBase/FFGLPluginSDK.h"
 #include "../../../Wyphon/WyphonUtils/WyphonUtils.h"
 
 class RRExportWyphon :
@@ -90,11 +90,9 @@ protected:
 	
 	// Wyphon's GL Texture
 	GLuint							m_glTextureName;
-	HANDLE							m_glTextureHandle;
+	HANDLE							m_hInteropObject;
 	HANDLE							m_shareHandle;
 
-	// The Framebuffer for copying the texture
-	GLuint							m_fbo;
 	int								m_width;
 	int								m_height;
 
