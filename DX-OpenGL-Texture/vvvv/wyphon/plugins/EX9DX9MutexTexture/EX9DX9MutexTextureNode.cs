@@ -37,7 +37,7 @@ namespace VVVV.Nodes
 	}
 
 	#region PluginInfo
-	[PluginInfo(Name = "DX9MutexTexture", Category = "EX9", Help = "Basic template which renders directly into the vvvv Renderer(EX9)", Tags = "")]
+	[PluginInfo(Name = "DX9MutexTexture", Category = "EX9.Texture", Help = "Basic template which renders directly into the vvvv Renderer(EX9)", Tags = "")]
 	#endregion PluginInfo
 	public class EX9DX9MutexTextureNode : DXLayerOutPluginBase<CustomDeviceData>, IPluginEvaluate
 	{
